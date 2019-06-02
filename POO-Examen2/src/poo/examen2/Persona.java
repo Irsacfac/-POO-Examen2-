@@ -10,5 +10,5 @@ package poo.examen2;
  * @author irsac
  */
 public class Persona {
-    
+    private int NoID;
 }
