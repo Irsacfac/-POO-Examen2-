@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package poo.examen2;
+package poo.examen2.modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import poo.examen2.Persona;
 
 /**
  *
@@ -16,12 +18,12 @@ public class Prestamo {
     private int numPrestamo;
     private Persona solicitante;
     private double valPrestamo;
-    private Date[] fechasDePago=new Date[6];
+    private ArrayList<Date> fechasDePago;
     private Date fechaAutorizacion;
     private Date fechaTentativa;
     
     public Prestamo(){
-        
+        setNumPrestamo();
     }
 
     /**
@@ -34,8 +36,9 @@ public class Prestamo {
     /**
      * @param numPrestamo the numPrestamo to set
      */
-    public void setNumPrestamo(int numPrestamo) {
-        this.numPrestamo = numPrestamo;
+    private void setNumPrestamo() {
+        this.numPrestamo = cantPrestamos;
+        cantPrestamos++;
     }
 
     /**
@@ -69,15 +72,15 @@ public class Prestamo {
     /**
      * @return the fechasDePago
      */
-    public Date[] getFechasDePago() {
-        return fechasDePago;
+    public Date getFechasDePago(int n) {
+        return fechasDePago.get(n);
     }
 
     /**
      * @param fechasDePago the fechasDePago to set
      */
-    public void setFechasDePago(Date[] fechasDePago) {
-        this.fechasDePago = fechasDePago;
+    public void setFechasDePago(Date fechasDePago) {
+        this.fechasDePago.add(fechasDePago);
     }
 
     /**
