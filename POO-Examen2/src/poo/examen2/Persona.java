@@ -14,11 +14,20 @@ public class Persona {
     private String nombre;
     private String pApellido;
     private String sApellido;
-    private int home;
+    private int home=0;
     private int phone;
     
     public Persona(){}
 
+    public String toString(){
+        String msg="";
+        msg+= "N° de Identificación: "+this.getNoID();
+        msg += "Nombre" + "\t" + "Primer Apellido" + "\t" + "Segundo apellido"+"\n";
+        msg += this.getNombre() + "\t" + this.getpApellido() + "\t" + this.getsApellido() + "\n";
+        msg += "Numero fijo: " +  "\t" + "\t" + "Telefono movil " + "\n";
+        msg += this.getHome() + "\t" + "\t" + this.getPhone() + "\n";
+        return msg;
+    }
     /**
      * @return the NoID
      */
