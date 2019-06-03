@@ -79,8 +79,8 @@ public class Prestamo {
     /**
      * @param fechasDePago the fechasDePago to set
      */
-    public void setFechasDePago(Date fechasDePago) {
-        this.fechasDePago.add(fechasDePago);
+    public void setFechasDePago() {
+        this.fechasDePago=null;
     }
 
     /**

@@ -7,6 +7,7 @@ package poo.examen2.modelo;
 
 import poo.examen2.modelo.Prestamo;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import poo.examen2.Persona;
 
@@ -19,6 +20,7 @@ public class Cliente {
     private Persona cliente;
     private Date fechaMax;
     private double totalPrestamo;
+    private final double maxVal=10000000.00;
     private ArrayList<Prestamo> prestamos;
     private boolean datosCompletos;
 
@@ -50,7 +52,10 @@ public class Cliente {
      * @param fechaMax the fechaMax to set
      */
     public void setFechaMax(Date fechaMax) {
-        this.fechaMax = fechaMax;
+      Calendar calendar = Calendar.getInstance();	
+      calendar.setTime(fecha); // Configuramos la fecha que se recibe
+      calendar.add(Calendar.DAY_OF_YEAR, 30);  	
+      this.fechaMax = calendar.getTime();
     }
 
     /**
