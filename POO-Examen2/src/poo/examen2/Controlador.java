@@ -10,5 +10,5 @@ package poo.examen2;
  * @author irsac
  */
 public class Controlador {
-    
+    public Controlador(){}
 }
