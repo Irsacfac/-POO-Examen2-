@@ -27,6 +27,9 @@ public class Cliente {
     public void setID(){
         this.ID=this.cliente.getNoID();
     }
+    public int getID(){
+        return ID;
+    }
     /**
      * @return the cliente
      */
@@ -51,10 +54,11 @@ public class Cliente {
     /**
      * @param fechaMax the fechaMax to set
      */
-    public void setFechaMax(Date fechaMax) {
-      Calendar calendar = Calendar.getInstance();	
+    public void setFechaMax() {
+      Calendar calendar = Calendar.getInstance();
+      Date fecha = calendar.getTime();
       calendar.setTime(fecha); // Configuramos la fecha que se recibe
-      calendar.add(Calendar.DAY_OF_YEAR, 30);  	
+      calendar.add(Calendar.DAY_OF_YEAR, 30);
       this.fechaMax = calendar.getTime();
     }
 
@@ -82,8 +86,15 @@ public class Cliente {
     /**
      * @param prestamos the prestamos to set
      */
-    public void setPrestamos(ArrayList<Prestamo> prestamos) {
-        this.prestamos = prestamos;
+    public boolean agregarPrestamo(Prestamo prestamo) {
+        double total= prestamo.getValPrestamo() + this.getTotalPrestamo();
+        if(total > this.maxVal){
+            this.prestamos.add(prestamo);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**

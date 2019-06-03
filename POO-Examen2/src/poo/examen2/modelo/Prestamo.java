@@ -6,6 +6,7 @@
 package poo.examen2.modelo;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import poo.examen2.Persona;
 
@@ -93,10 +94,44 @@ public class Prestamo {
     /**
      * @param fechaAutorizacion the fechaAutorizacion to set
      */
-    public void setFechaAutorizacion(Date fechaAutorizacion) {
-        this.fechaAutorizacion = fechaAutorizacion;
+    public void setFechaAutorizacion() {
+      Calendar calendar = Calendar.getInstance();
+      Date fecha = calendar.getTime();
+      if(this.getValPrestamo()<200000.00){
+        calendar.setTime(fecha); // Configuramos la fecha que se recibe
+        calendar.add(Calendar.DAY_OF_YEAR, 5);
+        if(calendar.get(Calendar.DAY_OF_MONTH)>20){
+            calendar.add(Calendar.MONTH, 1);
+            calendar.set(Calendar.DAY_OF_MONTH, 1);
+            this.fechaAutorizacion = calendar.getTime();
+        }
+        else{
+            this.fechaAutorizacion = calendar.getTime();
+        }
+      }
+      else if(500000.00>this.getValPrestamo()){
+        calendar.setTime(fecha); // Configuramos la fecha que se recibe
+        calendar.add(Calendar.DAY_OF_YEAR, 10);
+        if(calendar.get(Calendar.DAY_OF_MONTH)>20){
+            calendar.add(Calendar.MONTH, 1);
+            calendar.set(Calendar.DAY_OF_MONTH, 1);
+            this.fechaAutorizacion = calendar.getTime();
+        }
+        else{
+            this.fechaAutorizacion = calendar.getTime();
+        }
+      }
+      else{
+        calendar.setTime(fecha); // Configuramos la fecha que se recibe
+        calendar.add(Calendar.DAY_OF_YEAR, 15);
+        if(calendar.get(Calendar.DAY_OF_MONTH)>20){
+          calendar.add(Calendar.MONTH, 1);
+          calendar.set(Calendar.DAY_OF_MONTH, 1);
+          this.fechaAutorizacion = calendar.getTime();
+        }
+        this.fechaAutorizacion = calendar.getTime();
+      }
     }
-
     /**
      * @return the fechaTentativa
      */
@@ -108,7 +143,11 @@ public class Prestamo {
      * @param fechaTentativa the fechaTentativa to set
      */
     public void setFechaTentativa(Date fechaTentativa) {
-        this.fechaTentativa = fechaTentativa;
+        Calendar calendar = Calendar.getInstance();
+        Date fecha = this.getFechaAutorizacion();
+        calendar.setTime(fecha); // Configuramos la fecha que se recibe
+        calendar.add(Calendar.DAY_OF_YEAR, 3);
+        this.fechaTentativa = calendar.getTime();
     }
     
 }
