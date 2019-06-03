@@ -16,17 +16,21 @@ import poo.examen2.Persona;
  * @author irsac
  */
 public class Cliente {
-    private int ID;
-    private Persona cliente;
-    private Date fechaMax;
+    private int ID;//
+    private Persona cliente;//
+    private Date fechaMax;//
     private double totalPrestamo;
-    private final double maxVal=10000000.00;
     private ArrayList<Prestamo> prestamos;
     private boolean datosCompletos;
 
-    public void setID(){
+    public Cliente(){}
+    private void setID(){
         this.ID=this.cliente.getNoID();
     }
+    public String toString(){
+        return cliente.toString();
+    }
+    
     public int getID(){
         return ID;
     }
@@ -42,6 +46,7 @@ public class Cliente {
      */
     public void setCliente(Persona cliente) {
         this.cliente = cliente;
+        this.setID();
     }
 
     /**
@@ -79,22 +84,22 @@ public class Cliente {
     /**
      * @return the prestamos
      */
-    public ArrayList<Prestamo> getPrestamos() {
-        return prestamos;
+    public Prestamo getPrestamos(int prestamo) {
+        Prestamo p;
+        for(int i = 0;i<prestamos.size();i++){
+            p=prestamos.get(i);
+            if(p.getNumPrestamo()==prestamo){
+                return p;
+            }
+        }
+        return null;
     }
 
     /**
      * @param prestamos the prestamos to set
      */
-    public boolean agregarPrestamo(Prestamo prestamo) {
-        double total= prestamo.getValPrestamo() + this.getTotalPrestamo();
-        if(total > this.maxVal){
-            this.prestamos.add(prestamo);
-            return true;
-        }
-        else{
-            return false;
-        }
+    public void agregarPrestamo(Prestamo prestamo) {
+        this.prestamos.add(prestamo);
     }
 
     /**
