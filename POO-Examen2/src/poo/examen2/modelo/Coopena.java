@@ -12,12 +12,12 @@ import poo.examen2.Controlador;
  *
  * @author irsac
  */
-public class Modelo {
+public class Coopena {
     private ArrayList<Cliente> clientes;
     private final double maxVal=10000000.00;
     private Controlador controlador;
     
-    public Modelo(){}
+    public Coopena(){}
     public boolean solicitarPrestamo(Prestamo nPrestamo, int ID){
         Cliente actual=null;
         for(int i=0;i<clientes.size();i++){
