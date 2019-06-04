@@ -6,7 +6,6 @@
 package poo.examen2.modelo;
 
 import java.util.ArrayList;
-import poo.examen2.Controlador;
 
 /**
  *
