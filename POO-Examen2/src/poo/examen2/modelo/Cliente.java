@@ -88,15 +88,8 @@ public class Cliente {
     /**
      * @return the prestamos
      */
-    public Prestamo getPrestamos(int prestamo) {
-        Prestamo p;
-        for(int i = 0;i<prestamos.size();i++){
-            p=prestamos.get(i);
-            if(p.getNumPrestamo()==prestamo){
-                return p;
-            }
-        }
-        return null;
+    public ArrayList<Prestamo> getPrestamos() {
+        return prestamos;
     }
 
     /**

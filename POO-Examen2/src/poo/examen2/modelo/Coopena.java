@@ -6,6 +6,7 @@
 package poo.examen2.modelo;
 
 import java.util.ArrayList;
+import poo.examen2.Persona;
 
 /**
  *
@@ -17,6 +18,17 @@ public class Coopena {
     private Controlador controlador;
     
     public Coopena(){}
+    public void agregarCliente(String id, String nombre, String apellido, String home, String cellphone){
+        Cliente cliente=new Cliente();
+        Persona persona=new Persona();
+        persona.setNoID(0);
+        persona.setNombre(nombre);
+        persona.setpApellido(apellido);
+        persona.setHome(0);
+        persona.setPhone(0);
+        clientes.add(cliente);
+        
+    }
     public boolean solicitarPrestamo(Prestamo nPrestamo, int ID){
         Cliente actual=null;
         for(int i=0;i<clientes.size();i++){

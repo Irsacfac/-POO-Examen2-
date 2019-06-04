@@ -17,11 +17,26 @@ public class Controlador implements ActionListener{
     private venCrearCliente venCrearCliente;
     private venSolicitarPrestamo venSolicitarPrestamo;
     private venPrestamosVigentes venPrestamosVigentes;
+    private Coopena modelo;
     
     private Coopena master;
     
     
-    public Controlador(){}
+    public Controlador(venCrearCliente venCreateClient, venSolicitarPrestamo venSolicitatePrestamo, venPrestamosVigentes venPrestamosV, Coopena modelo){
+        this.venCrearCliente=venCreateClient;
+        this.venPrestamosVigentes=venPrestamosV;
+        this.venSolicitarPrestamo=venSolicitatePrestamo;
+        this.venCrearCliente.jButton1.addActionListener(this);
+        
+    }
+    public void actionPerformed(ActionEvent e){
+        String id=venCrearCliente.jTextField1.getText();
+        String nombre=venCrearCliente.jTextField2.getText();
+        String apellido=venCrearCliente.jTextField3.getText();
+        String home=venCrearCliente.jTextField4.getText();
+        String cellphone=venCrearCliente.jTextField5.getText();
+        modelo.agregarCliente(id, nombre, apellido, home, cellphone);
+    }
 
     
 }
