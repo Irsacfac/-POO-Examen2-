@@ -21,11 +21,12 @@ public class Coopena {
     public void agregarCliente(String id, String nombre, String apellido, String home, String cellphone){
         Cliente cliente=new Cliente();
         Persona persona=new Persona();
-        persona.setNoID(0);
+        persona.setNoID(Integer.parseInt(id));
         persona.setNombre(nombre);
         persona.setpApellido(apellido);
-        persona.setHome(0);
-        persona.setPhone(0);
+        persona.setHome(Integer.parseInt(home));
+        persona.setPhone(Integer.parseInt(cellphone));
+        cliente.setCliente(persona);
         clientes.add(cliente);
         
     }
@@ -51,6 +52,4 @@ public class Coopena {
      public ArrayList<Cliente> getClientes() {
         return clientes;
     }
-    
-    
 }
