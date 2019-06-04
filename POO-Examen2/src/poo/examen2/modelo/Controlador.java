@@ -27,7 +27,7 @@ public class Controlador implements ActionListener{
         this.venPrestamosVigentes=venPrestamosV;
         this.venSolicitarPrestamo=venSolicitatePrestamo;
         this.venCrearCliente.jButton1.addActionListener(this);
-        
+        this.venSolicitarPrestamo.jButton1.addActionListener(this);
     }
     public void actionPerformed(ActionEvent e){
         String id=venCrearCliente.jTextField1.getText();
@@ -38,5 +38,7 @@ public class Controlador implements ActionListener{
         modelo.agregarCliente(id, nombre, apellido, home, cellphone);
     }
 
-    
+    public void actionPerformed2(ActionEvent e){
+        
+    }
 }

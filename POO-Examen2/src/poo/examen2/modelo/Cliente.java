@@ -88,9 +88,7 @@ public class Cliente {
     /**
      * @return the prestamos
      */
-    public ArrayList<Prestamo> getPrestamos() {
-        return prestamos;
-    }
+   
 
     /**
      * @param prestamos the prestamos to set
