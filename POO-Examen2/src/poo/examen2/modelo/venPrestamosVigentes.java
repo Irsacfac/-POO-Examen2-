@@ -20,48 +20,25 @@ public class venPrestamosVigentes extends javax.swing.JFrame {
      * Creates new form vBlog
      * @param pBlog
      */
-    public venPrestamosVigentes(Blog pBlog) {
+    public venPrestamosVigentes(Coopena pMaster) {
+        
+        this.master = pMaster;
+        
+       master.getClientes().forEach((nCliente) -> {
+              listClientes.addItem(nCliente.getNombre());
+       });
+       
+       
+       master.getClientes().get(0).getPrestamos().forEach((nPrestamo) -> {
+           model.addElement(nPrestamo.getNumPrestamo());
+
+       });
+       
+       jList1.setModel(model);
+               
+       
+        
         initComponents();
-        
-        blog=pBlog;
-        titulo.setText(pBlog.getNombre());
-        
-        jLabel1.setVisible(false);
-        jLabel2.setVisible(false);
-        jLabel3.setVisible(false);
-        jLabel4.setVisible(false);
-        jScrollPane2.setVisible(false);
-        
-        jLabel1.setText("");
-        jLabel2.setText("");
-        jLabel3.setText("");
-        jLabel4.setText("");
-        
-    }
-    public venPrestamosVigentes(Blog pBlog,ArrayList<Publicacion> pPubs) {
-        initComponents();
-        
-        blog=pBlog;
-        Pubs = pPubs;
-        
-        titulo.setText(pBlog.getNombre());
-        
-        jList1.setModel(model);
-        
-        Pubs.forEach((nPub) -> {
-            model.addElement(nPub.getNombre());
-        });
-        
-        jLabel1.setVisible(false);
-        jLabel2.setVisible(false);
-        jLabel3.setVisible(false);
-        jLabel4.setVisible(false);
-        jScrollPane2.setVisible(false);
-        
-        jLabel1.setText("");
-        jLabel2.setText("");
-        jLabel3.setText("");
-        jLabel4.setText("");
         
         
     }
@@ -88,6 +65,14 @@ public class venPrestamosVigentes extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        listClientes = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        fechaTentativa = new javax.swing.JLabel();
+        numPrestamo = new javax.swing.JLabel();
+        fechaCuota = new javax.swing.JLabel();
+        fechaAutorizacion = new javax.swing.JLabel();
+        valorPrestamo = new javax.swing.JLabel();
+        nombSolicitante2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,7 +81,7 @@ public class venPrestamosVigentes extends javax.swing.JFrame {
 
         titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         titulo.setText("Prestamos Vigentes");
-        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 580, 40));
+        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 230, 40));
 
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,7 +93,7 @@ public class venPrestamosVigentes extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 190, 250));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 10, 300));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 10, 300));
 
         esquina.setText("  ");
         jPanel1.add(esquina, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 30, -1));
@@ -117,22 +102,38 @@ public class venPrestamosVigentes extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jLabel6.setText("Fecha Tentativa");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
 
-        jLabel7.setText("Numero de Prestamo:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
+        jLabel7.setText("Numero de Prestamo");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
 
         jLabel8.setText("Solicitante");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
 
         jLabel9.setText("Valor del Prestamo");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
 
         jLabel10.setText("Fecha de Cuota");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
 
         jLabel11.setText("Fecha de Autorizacion");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, -1, -1));
+
+        listClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listClientesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(listClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 50, -1));
+
+        jLabel1.setText("Cliente Actual");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+        jPanel1.add(fechaTentativa, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 100, 20));
+        jPanel1.add(numPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 100, 20));
+        jPanel1.add(fechaCuota, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 100, 20));
+        jPanel1.add(fechaAutorizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 100, 20));
+        jPanel1.add(valorPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 100, 20));
+        jPanel1.add(nombSolicitante2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 100, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,34 +152,42 @@ public class venPrestamosVigentes extends javax.swing.JFrame {
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         // TODO add your handling code here:
         
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String fechaCadena = sdf.format(new Date());
-      
-        Pubs.forEach((nPub) -> {
-              if(nPub.getNombre().equals(jList1.getSelectedValue())){
-                  jLabel2.setText(nPub.getNombre());
-                  textCamp1.setText(nPub.getDescripcion());
-                  jLabel4.setText(fechaCadena);
-                  jLabel1.setText(nPub.getCodigo());
-              }
-          });
+      master.getClientes().get(0).getPrestamos().forEach((nPrestamo) -> {
+           model.addElement(nPrestamo.getNumPrestamo());
+           if(nPrestamo.getNumPrestamo() == (Integer.parseInt(jList1.getSelectedValue()))){
+               fechaCuota.setText(nPrestamo.getSolicitante().getNombre());
+               numPrestamo.setText((Integer.toString(nPrestamo.getNumPrestamo())));
+               fechaAutorizacion.setText(nPrestamo.getFechaAutorizacion());
+               fechaTentativa.setText(nPrestamo.getFechaTentativa());
+               valorPrestamo.setText((Integer.toString(nPrestamo.getValPrestamo())));
+               fechaCuota.setText(nPrestamo.getFechasDePago());
+               
+                  
+            }
+
+       });
         
         jLabel1.setVisible(true);
-        jLabel2.setVisible(true);
-        jLabel3.setVisible(true);
-        jLabel4.setVisible(true);
-        jScrollPane2.setVisible(true);
+        fechaTentativa.setVisible(true);
+        numPrestamo.setVisible(true);
       
        
     }//GEN-LAST:event_jList1MouseClicked
 
+    private void listClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listClientesActionPerformed
+
     
     
-    private Blog blog;
-    private ArrayList<Publicacion> Pubs = new ArrayList<>();
+    private Coopena master;
     private DefaultListModel model = new DefaultListModel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel esquina;
+    private javax.swing.JLabel fechaAutorizacion;
+    private javax.swing.JLabel fechaCuota;
+    private javax.swing.JLabel fechaTentativa;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
@@ -190,6 +199,10 @@ public class venPrestamosVigentes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JComboBox<String> listClientes;
+    private javax.swing.JLabel nombSolicitante2;
+    private javax.swing.JLabel numPrestamo;
     private javax.swing.JLabel titulo;
+    private javax.swing.JLabel valorPrestamo;
     // End of variables declaration//GEN-END:variables
 }

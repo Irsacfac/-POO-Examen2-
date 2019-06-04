@@ -35,6 +35,11 @@ public class Coopena {
         actual.agregarPrestamo(nPrestamo);
         return true;
     }
+    
+     public ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+    
     public boolean cancelarPrestamo(int numPrestamo,int ID){
         Cliente actual=null;
         for(int i=0;i<clientes.size();i++){
@@ -52,7 +57,7 @@ public class Coopena {
             return false;
         }
     }
-    public boolean realizarPago(int numPrestamo,int ID, double monto){
+    public boolean realizarPago(int numPrestamo,int ID, int monto){
         Cliente actual=null;
         for(int i=0;i<clientes.size();i++){
             if(clientes.get(i).getCliente().getNoID()==ID){

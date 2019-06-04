@@ -19,14 +19,14 @@ public class Prestamo {
     private static int cantPrestamos=1;//
     private int numPrestamo;//
     private Cliente solicitante;//
-    private double valPrestamo;//
+    private int valPrestamo;//
     private ArrayList<Date> fechasDePago;//
     private Date fechaAutorizacion;//
     private Date fechaTentativa;//
     private boolean cancelado;
     private SimpleDateFormat mascara=new SimpleDateFormat("dd/MM/yy");
     
-    public Prestamo(double cant){
+    public Prestamo(int cant){
         setNumPrestamo();
         this.setValPrestamo(cant);
     }
@@ -76,14 +76,14 @@ public class Prestamo {
     /**
      * @return the valPrestamo
      */
-    public double getValPrestamo() {
+    public int getValPrestamo() {
         return valPrestamo;
     }
 
     /**
      * @param valPrestamo the valPrestamo to set
      */
-    public void setValPrestamo(double valPrestamo) {
+    public void setValPrestamo(int valPrestamo) {
         this.valPrestamo = valPrestamo;
     }
 

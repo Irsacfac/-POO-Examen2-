@@ -21,6 +21,10 @@ public class Cliente {
     private Date fechaMax;//
     private double totalPrestamo;
     private ArrayList<Prestamo> prestamos;
+
+    public ArrayList<Prestamo> getPrestamos() {
+        return prestamos;
+    }
     private boolean datosCompletos;
 
     public Cliente(){}
@@ -114,5 +118,9 @@ public class Cliente {
      */
     public void setDatosCompletos(boolean datosCompletos) {
         this.datosCompletos = datosCompletos;
+    }
+    
+    public String getNombre() {
+        return this.cliente.getNombre();
     }
 }
